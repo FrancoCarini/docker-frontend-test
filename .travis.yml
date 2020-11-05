@@ -1,0 +1,9 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t francocarini/docker-frontend-test -f Dockerfile.dev .
+script:
+  - docker run -e CI=true francocarini/docker-frontend-test npm run test
